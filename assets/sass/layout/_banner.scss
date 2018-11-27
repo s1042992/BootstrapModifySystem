@@ -1,0 +1,124 @@
+///
+/// Telemetry by Pixelarity
+/// pixelarity.com | hello@pixelarity.com
+/// License: pixelarity.com/license
+///
+
+/* Banner */
+
+	#banner {
+		@include color-typography(accent1);
+		@include color-button(accent1);
+		@include padding(8em, 0, (2em, 0, 0, 0));
+		@include vendor('display', 'flex');
+		@include vendor('align-items', 'center');
+		@include vendor('justify-content', 'center');
+		background-attachment: fixed;
+		background-image: url('../../images/pic01.jpg');
+		background-position: bottom left;
+		background-size: cover;
+		border-top: solid 10px _palette(accent1, bg);
+		min-height: 75vh;
+		position: relative;
+		text-align: center;
+		width: 100%;
+
+		> .inner {
+			@include vendor('transition', (
+				'transform 0.75s ease-in-out',
+				'opacity 0.75s ease-in-out'
+			));
+			position: relative;
+			width: 45em;
+			max-width: calc(100% - #{_size(gutter) * 2});
+			z-index: 1;
+		}
+
+		.icon {
+			display: inline-block;
+			background-color: white;
+			border-radius: 100%;
+			color: _palette(accent1, bg);
+			font-size: 3.75em;
+			height: 1.6em;
+			line-height: 1.5em;
+			margin-bottom: 0.75em;
+			width: 1.6em;
+		}
+
+		h1 {
+			margin-bottom: 0.825em;
+		}
+
+		p {
+			font-size: 1.5em;
+			margin-bottom: 1.75em;
+		}
+
+		.actions {
+			border-top: solid _size(border-width) _palette(accent1, border);
+			padding-top: (_size(element-margin) * 1.75);
+		}
+
+		&:before {
+			@include vendor('transition', 'opacity 1s ease-in-out');
+			@include vendor('transition-delay', '0.75s');
+			content: '';
+			display: block;
+			background: rgba(32,32,32,1);
+			height: 100%;
+			left: 0;
+			opacity: 0.25;
+			position: absolute;
+			top: 0;
+			width: 100%;
+		}
+
+		body.is-loading & {
+			> .inner {
+				@include vendor('transform', 'translateY(0.75em)');
+				opacity: 0;
+			}
+
+			&:before {
+				opacity: 1;
+			}
+		}
+
+		@include breakpoint(xlarge) {
+			min-height: 0;
+		}
+
+		@include breakpoint(large) {
+			@include padding(5em, 0, (1em, 0, 0, 0));
+			background-attachment: scroll;
+		}
+
+		@include breakpoint(medium) {
+			@include padding(8em, 0, (2em, 0, 0, 0));
+
+			.icon {
+				margin-bottom: 0.5em;
+			}
+		}
+
+		@include breakpoint(small) {
+			@include padding(4em, 0, (1em, 0, 0, 0));
+
+			> .inner {
+				max-width: calc(100% - 3em);
+			}
+
+			.icon {
+				font-size: 3.25em;
+			}
+
+			.actions {
+				padding-top: _size(element-margin);
+			}
+		}
+
+		@include breakpoint(xsmall) {
+			@include padding(3em, 0, (1em, 0, 0, 0));
+		}
+	}

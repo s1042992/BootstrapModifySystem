@@ -1,0 +1,186 @@
+///
+/// Telemetry by Pixelarity
+/// pixelarity.com | hello@pixelarity.com
+/// License: pixelarity.com/license
+///
+
+/* Features */
+
+	.features {
+		$padding: _size(gutter);
+
+		@include vendor('display', 'flex');
+		@include vendor('flex-wrap', 'wrap');
+
+		> article {
+			border-style: solid;
+			border-top-width: _size(border-width);
+			border-right-width: 0;
+			border-bottom-width: 0;
+			border-left-width: _size(border-width);
+			padding: ($padding * 0.75) 0;
+			position: relative;
+
+			> :last-child {
+				margin-bottom: 0;
+			}
+
+			&:before {
+				position: absolute;
+				font-size: 1.875rem;
+				top: (($padding * 0.5) / 2);
+			}
+
+			&:nth-child(1),
+			&:nth-child(2) {
+				border-top-width: 0;
+			}
+
+			&:nth-child(2n -1) {
+				border-left-width: 0;
+				padding-left: ($padding + 0.5);
+				padding-right: $padding;
+				width: 50%;
+
+				&:before {
+					left: 0;
+				}
+			}
+
+			&:nth-child(2n) {
+				padding-left: (($padding * 2) + 0.5);
+				padding-right: 0;
+				width: 50%;
+
+				&:before {
+					left: ($padding / 2);
+				}
+			}
+
+			h3 {
+				margin: 0 0 (_size(element-margin) * 0.25) 0;
+			}
+		}
+
+		@include breakpoint(large) {
+			$padding: (_size(gutter) * 0.75);
+
+			> article {
+				padding: ($padding * 0.75) 0;
+
+				&:before {
+					font-size: 1.5rem;
+					top: (($padding * 0.5) / 1.625);
+				}
+
+				&:nth-child(2n -1) {
+					padding-left: ($padding + 0.5);
+					padding-right: $padding;
+				}
+
+				&:nth-child(2n) {
+					padding-left: (($padding * 2) + 0.5);
+					padding-right: 0;
+
+					&:before {
+						left: ($padding / 1.625);
+					}
+				}
+			}
+		}
+
+		@include breakpoint(medium) {
+			$padding: _size(gutter);
+
+			> article {
+				padding: $padding 0;
+
+				&:before {
+					font-size: 1.5rem;
+					top: (($padding * 0.825) / 1.625);
+				}
+
+				&:nth-child(2n -1) {
+					padding-left: ($padding + 0);
+					padding-right: $padding;
+				}
+
+				&:nth-child(2n) {
+					padding-left: (($padding * 2) + 0);
+					padding-right: 0;
+
+					&:before {
+						left: ($padding / 1.625);
+					}
+				}
+			}
+		}
+
+		@include breakpoint(xsmall) {
+			$padding: _size(gutter);
+
+			> article {
+				border-left-width: 0;
+				padding: ($padding * 0.75) 0;
+
+				&:before {
+					top: (($padding * 0.525) / 1.625);
+				}
+
+				&:nth-child(1) {
+					border-top-width: 0;
+				}
+
+				&:nth-last-child(1) {
+					padding-bottom: 0;
+				}
+
+				&:nth-child(2) {
+					border-top-width: _size(border-width);
+				}
+
+				&:nth-child(2n -1) {
+					padding-left: ($padding + 0);
+					padding-right: 0;
+					width: 100%;
+
+					&:before {
+						left: 0;
+					}
+				}
+
+				&:nth-child(2n) {
+					padding-left: ($padding + 0);
+					padding-right: 0;
+					width: 100%;
+
+					&:before {
+						left: 0;
+					}
+				}
+			}
+		}
+	}
+
+	@mixin color-features($p: null) {
+		$highlight: _palette($p, highlight);
+
+		.features {
+			> article {
+				border-color: _palette($p, border);
+
+				@if $p == $highlight {
+					&:before, h3 {
+						color: _palette($p, fg-bold);
+					}
+				}
+				@else {
+					&:before, h3 {
+						color: _palette($highlight, bg);
+					}
+				}
+			}
+		}
+	}
+
+	@include color-features;

@@ -1,0 +1,102 @@
+@import 'libs/vars';
+@import 'libs/functions';
+@import 'libs/mixins';
+@import 'libs/skel';
+
+/*
+	Telemetry by Pixelarity
+	pixelarity.com | hello@pixelarity.com
+	License: pixelarity.com/license
+*/
+
+/* Features */
+
+	.features {
+		> article {
+			float: left;
+			width: 48%;
+		}
+
+		&:after {
+			content: '';
+			display: block;
+			clear: both;
+		}
+	}
+
+/* Stats */
+
+	.stats {
+		> article {
+			float: left;
+			width: 24%;
+		}
+
+		&:after {
+			content: '';
+			display: block;
+			clear: both;
+		}
+	}
+
+/* Split */
+
+	.split {
+		> * {
+			float: left;
+			width: 42% !important;
+		}
+
+		&:after {
+			content: '';
+			display: block;
+			clear: both;
+		}
+	}
+
+/* Quotes */
+
+	.quotes {
+		> article {
+			float: left;
+		}
+
+		&:after {
+			content: '';
+			display: block;
+			clear: both;
+		}
+	}
+
+/* Header */
+
+	#header {
+		> .logo {
+			float: left;
+		}
+
+		> nav {
+			float: right;
+			margin-top: 0.625em;
+
+			> ul {
+				> li {
+					display: inline-block;
+				}
+			}
+		}
+
+		&.alt {
+			> nav {
+				margin-top: 0;
+			}
+		}
+	}
+
+/* Banner */
+
+	#banner {
+		> .inner {
+			margin: 0 auto;
+		}
+	}

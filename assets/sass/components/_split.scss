@@ -1,0 +1,108 @@
+///
+/// Telemetry by Pixelarity
+/// pixelarity.com | hello@pixelarity.com
+/// License: pixelarity.com/license
+///
+
+/* Split */
+
+	.split {
+		@include vendor('align-items', 'flex-start');
+		@include vendor('display', 'flex');
+		margin-left: (_size(gutter) * -2);
+		margin-bottom: _size(element-margin);
+
+		> * {
+			margin-left: (_size(gutter) * 2) !important;
+			width: 50%;
+			-ms-flex: 1 1 auto;
+
+			> :last-child {
+				margin-bottom: 0;
+			}
+		}
+
+		&.centered {
+			@include vendor('align-items', 'center');
+		}
+
+		&.reversed {
+			// ...
+		}
+
+		&.style1 {
+			> * {
+				&:nth-child(2n - 1) {
+					width: 33%;
+				}
+
+				&:nth-child(2n) {
+					width: 67%;
+				}
+			}
+		}
+
+		@include breakpoint(large) {
+			margin-left: (_size(gutter) * -1.25);
+
+			> * {
+				margin-left: (_size(gutter) * 1.25) !important;
+			}
+
+			&.centered {
+				@include vendor('align-items', 'flex-start');
+			}
+
+			&.reversed {
+				// ...
+			}
+		}
+
+		@include breakpoint(medium) {
+			@include vendor('flex-direction', 'column');
+			margin-left: 0;
+
+			> * {
+				margin-left: 0 !important;
+				margin-top: (_size(gutter) * 1.25) !important;
+				width: 100% !important;
+
+				&:first-child {
+					margin-top: 0 !important;
+				}
+			}
+
+			&.centered {
+				// ...
+			}
+
+			&.reversed {
+				@include vendor('flex-direction', 'column-reverse');
+
+				> * {
+					margin-bottom: (_size(gutter) * 1.25) !important;
+					margin-top: 0 !important;
+
+					&:first-child {
+						margin-bottom: 0 !important;
+					}
+				}
+			}
+		}
+
+		@include breakpoint(small) {
+			> * {
+				margin-top: _size(gutter) !important;
+			}
+
+			&.centered {
+				// ...
+			}
+
+			&.reversed {
+				> * {
+					margin-bottom: _size(gutter) !important;
+				}
+			}
+		}
+	}

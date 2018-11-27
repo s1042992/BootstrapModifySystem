@@ -1,0 +1,19 @@
+///
+/// Telemetry by Pixelarity
+/// pixelarity.com | hello@pixelarity.com
+/// License: pixelarity.com/license
+///
+
+/* Main */
+
+	#main {
+		padding: 10em 0 4em 0;
+
+		@include breakpoint(large) {
+			padding: 8em 0 3em 0;
+		}
+
+		@include breakpoint(small) {
+			padding: 6em 0 2em 0;
+		}
+	}

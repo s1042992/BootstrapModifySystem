@@ -1,0 +1,242 @@
+///
+/// Telemetry by Pixelarity
+/// pixelarity.com | hello@pixelarity.com
+/// License: pixelarity.com/license
+///
+
+/* Header */
+
+	#header {
+		@include vendor('display', 'flex');
+		@include vendor('align-items', 'center');
+		@include vendor('transition-duration', '#{_duration(transition)}');
+		@include vendor('transition-property', 'background-color padding');
+		@include vendor('transition-timing-function', 'ease-in-out');
+		@include color-button(accent1);
+		background: saturate(lighten(_palette(accent1, bg), 2), 5);
+		color: _palette(accent1, fg-bold);
+		left: 0;
+		padding: 1em 1.5em;
+		position: fixed;
+		top: 0;
+		width: 100%;
+		z-index: _misc(z-index-base) + 1;
+
+		a {
+			color: inherit;
+			text-decoration: none;
+
+			&:hover {
+				color: _palette(accent1, fg-bold);
+			}
+		}
+
+		> .logo {
+			@include vendor('flex-grow', '1');
+			@include vendor('flex-shrink', '1');
+			cursor: default;
+
+			> * {
+				display: inline-block;
+				vertical-align: middle;
+			}
+
+			> a {
+				font-size: 1.75em;
+			}
+
+			> span {
+				border-left: solid _size(border-width) _palette(accent1, fg);
+				margin-left: 1.5em;
+				padding-left: 1.5em;
+			}
+		}
+
+		> nav {
+			@include vendor('flex-grow', '0');
+			@include vendor('flex-shrink', '0');
+			margin-right: 0.5em;
+
+			> ul {
+				@include vendor('align-items', 'center');
+				@include vendor('display', 'flex');
+				list-style-type: none;
+				margin: 0;
+				padding: 0;
+
+				> li {
+					margin-left: 2.25em;
+					padding: 0;
+
+					> ul {
+						display: none;
+					}
+				}
+			}
+
+			a {
+				&.icon {
+					&:before {
+						margin-right: 0.625em;
+					}
+				}
+
+				&[href="#navPanel"] {
+					@include icon;
+					-webkit-tap-highlight-color: rgba(0,0,0,0);
+					display: none;
+					font-weight: _font(weight-bold);
+					margin-left: 0.5em;
+					padding: 0.5em 1.25em;
+
+					&:before {
+						content: '\f0c9';
+					}
+				}
+			}
+
+			@at-root {
+				.dropotron {
+					background-color: _palette(bg);
+					border-radius: 0.5em;
+					box-shadow: 0 0.075em 0.125em 0.1em rgba(0,0,0,0.075);
+					list-style-type: none;
+					margin: -0.5em 0 0 1px;
+					min-width: 10em;
+					padding: 0.5em 0;
+
+					&.level-0 {
+						margin-top: 1.125em;
+						margin-left: 0;
+
+						&:before {
+							@include vendor('transform', 'rotate(45deg)');
+							background-color: _palette(bg);
+							box-shadow: -2px -2px 3px -1px rgba(0,0,0,0.1);
+							content: '';
+							height: 0.75em;
+							position: absolute;
+							right: 2em;
+							top: -0.375em;
+							width: 0.75em;
+						}
+					}
+
+					li {
+						border-top: solid _size(border-width) _palette(border);
+						padding: 0;
+						position: relative;
+
+						&:first-child {
+							border-top: none;
+						}
+
+						&.active > a {
+							background-color: _palette(accent1, bg);
+							color: _palette(accent1, fg-bold);
+						}
+					}
+
+					a {
+						color: _palette(fg);
+						padding: 0.5em 1em;
+						text-decoration: none !important;
+
+						&:active, &:hover, &:focus {
+							background-color: _palette(accent1, bg);
+							color: _palette(accent1, fg-bold);
+						}
+					}
+				}
+			}
+		}
+
+		> .navPanelToggle {
+			@include vendor('transition', (
+				'background-color #{_duration(transition)} ease-in-out',
+				'color #{_duration(transition)} ease-in-out',
+				'top #{_duration(transition)} ease-in-out',
+				'right #{_duration(transition)} ease-in-out'
+			));
+			@include icon;
+			display: none;
+			height: 3em;
+			line-height: 3em;
+			margin-right: -0.5em;
+			padding: 0 1.5em;
+
+			&:before {
+				content: '\f0c9';
+				margin: 0 0.5em 0 0;
+			}
+		}
+
+		&.alt {
+			background-color: transparent;
+			padding: 2em 2.5em;
+
+			> nav {
+				margin-right: 0;
+			}
+
+			> .navPanelToggle {
+				margin-right: -1em;
+			}
+		}
+
+		@include breakpoint(large) {
+			> .logo {
+				> a {
+					font-size: 1.25em;
+				}
+
+				> span {
+					margin-left: 1.25em;
+					padding-left: 1.25em;
+				}
+			}
+		}
+
+		@include breakpoint(medium) {
+			padding: 0.75em 1.25em;
+
+			> nav {
+				display: none;
+			}
+
+			> .navPanelToggle {
+				display: block;
+			}
+
+			&.alt {
+				padding: 2em 2em;
+			}
+		}
+
+		@include breakpoint(small) {
+			padding: 0.5em 0.825em;
+
+			> .logo {
+				> a {
+					font-size: 1em;
+				}
+
+				> span {
+					display: none;
+				}
+			}
+
+			> .navPanelToggle {
+				height: 2.5em;
+				line-height: 2.5em;
+				padding: 0 1em;
+
+				&:before {
+				}
+			}
+
+			&.alt {
+				padding: 1.5em 1.5em;
+			}
+		}
+	}

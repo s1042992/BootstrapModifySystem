@@ -1,0 +1,52 @@
+///
+/// Telemetry by Pixelarity
+/// pixelarity.com | hello@pixelarity.com
+/// License: pixelarity.com/license
+///
+
+/* Footer */
+
+	#footer {
+		@include color-typography(accent1);
+		@include color-button(accent1);
+		@include color-form(accent1);
+		@include color-list(accent1);
+		@include padding(7.5em, 0);
+		background-color: _palette(accent1, bg);
+
+		> .inner {
+			margin: 0 auto;
+			width: _size(inner);
+			max-width: calc(100% - #{_size(gutter) * 2});
+		}
+
+		.copyright {
+			border-top: solid _size(border-width) _palette(accent1, border);
+			font-size: 0.9em;
+			margin-top: 4em;
+			padding-top: 4em;
+			text-align: center;
+			width: 100%;
+		}
+
+		@include breakpoint(large) {
+			@include padding(5em, 0);
+
+			.contact {
+				margin-right: _size(gutter) * 0.5;
+			}
+		}
+
+		@include breakpoint(small) {
+			@include padding(3em, 0);
+
+			> .inner {
+				max-width: calc(100% - 3em);
+			}
+
+			.copyright {
+				margin-top: 2em;
+				padding-top: 2em;
+			}
+		}
+	}

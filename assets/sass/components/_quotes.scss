@@ -1,0 +1,108 @@
+///
+/// Telemetry by Pixelarity
+/// pixelarity.com | hello@pixelarity.com
+/// License: pixelarity.com/license
+///
+
+/* Quotes */
+
+	.quotes {
+		@include vendor('display', 'flex');
+		@include vendor('flex-wrap', 'wrap');
+		@include color-typography(accent1);
+		text-align: center;
+
+		> article {
+			@include padding(8em, 0);
+			background-position: center;
+			background-repeat: no-repeat;
+			background-size: cover;
+			position: relative;
+			width: 50%;
+
+			.author {
+				margin: 0 0 _size(element-margin) 0;
+
+				.name {
+					color: _palette(accent1, bg);
+					display: block;
+					font-size: 1.2em;
+					font-weight: _font(weight-bold);
+					margin: 0 0 (_size(element-margin) * 0.25) 0;
+				}
+
+				.title {
+					display: block;
+				}
+			}
+
+			&:nth-child(odd) {
+				padding-left: calc(50vw - #{_size(inner) * 0.5});
+				padding-right: _size(gutter);
+			}
+
+			&:nth-child(even) {
+				padding-left: _size(gutter);
+				padding-right: calc(50vw - #{_size(inner) * 0.5});
+			}
+
+			&:before {
+				background-color: _palette(accent1, bg);
+				border-radius: 100%;
+				display: inline-block;
+				font-size: 2em;
+				height: 2.4em;
+				line-height: 2.4em;
+				margin-bottom: 0.7em;
+				position: relative;
+				text-align: center;
+				width: 2.4em;
+				z-index: 1;
+			}
+
+			&:after {
+				@include vendor('transition', 'opacity 1s ease-in-out');
+				@include vendor('transition-delay', '0.75s');
+				background: rgba(32,32,32,1);
+				content: '';
+				display: block;
+				height: 100%;
+				left: 0;
+				opacity: 0.25;
+				position: absolute;
+				top: 0;
+				width: 100%;
+			}
+
+			> * {
+				position: relative;
+				z-index: 1;
+			}
+		}
+
+		@include breakpoint(large) {
+			> article {
+				&:nth-child(odd) {
+					padding-left: _size(gutter);
+					padding-right: _size(gutter);
+				}
+
+				&:nth-child(even) {
+					padding-left: _size(gutter);
+					padding-right: _size(gutter);
+				}
+			}
+		}
+
+		@include breakpoint(medium) {
+			> article {
+				width: 100%;
+			}
+		}
+
+		@include breakpoint(small) {
+			> article {
+				@include padding(4em, 0);
+			}
+		}
+	}

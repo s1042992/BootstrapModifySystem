@@ -1,0 +1,76 @@
+///
+/// Telemetry by Pixelarity
+/// pixelarity.com | hello@pixelarity.com
+/// License: pixelarity.com/license
+///
+
+/* Section/Article */
+
+	section, article {
+		&.special {
+			text-align: center;
+		}
+	}
+
+	header {
+		p {
+			position: relative;
+			margin: 0 0 _size(element-margin) 0;
+		}
+
+		h1 + p {
+			font-size: 1.5em;
+			margin-top: (_size(element-margin) * -1.325);
+		}
+
+		h2 + p {
+			font-size: 1.25em;
+			margin-top: (_size(element-margin) * -1);
+		}
+
+		h3 + p {
+			font-size: 1em;
+			margin-top: (_size(element-margin) * -0.625);
+		}
+
+		h4 + p,
+		h5 + p,
+		h6 + p {
+			font-size: 0.9em;
+			margin-top: (_size(element-margin) * -0.325);
+		}
+
+		@include breakpoint(large) {
+			h1 + p {
+				font-size: 1.25em;
+				margin-top: (_size(element-margin) * -1.25);
+			}
+
+			h2 + p {
+				font-size: 1em;
+				margin-top: (_size(element-margin) * -1);
+			}
+		}
+
+		@include breakpoint(small) {
+			h1 + p {
+				font-size: 1.25em;
+				margin-top: (_size(element-margin) * -0.825);
+			}
+
+			h2 + p {
+				font-size: 1em;
+				margin-top: (_size(element-margin) * -0.625);
+			}
+		}
+	}
+
+	@mixin color-section($p: null) {
+		header {
+			p {
+				color: _palette($p, fg-light);
+			}
+		}
+	}
+
+	@include color-section;

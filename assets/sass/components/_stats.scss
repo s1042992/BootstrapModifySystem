@@ -1,0 +1,95 @@
+///
+/// Telemetry by Pixelarity
+/// pixelarity.com | hello@pixelarity.com
+/// License: pixelarity.com/license
+///
+
+/* Stats */
+
+	.stats {
+		@include vendor('display', 'flex');
+		margin: 0 0 _size(element-margin) 0;
+
+		> article {
+			@include vendor('flex-grow', '1');
+			@include vendor('flex-shrink', '1');
+			border-style: solid;
+			border-right-width: _size(border-width);
+			padding: 0 _size(gutter);
+
+			&:nth-last-child(1) {
+				border-right-width: 0;
+			}
+
+			h3 {
+				span {
+					display: block;
+					font-size: 3em;
+					font-weight: _font(weight);
+					line-height: 1;
+					margin-bottom: 0.25em;
+				}
+			}
+
+			> :last-child {
+				margin-bottom: 0;
+			}
+		}
+
+		@include breakpoint(large) {
+			> article {
+				padding: 0 (_size(gutter) * 0.5);
+			}
+		}
+
+		@include breakpoint(medium) {
+			@include vendor('flex-wrap', 'wrap');
+
+			> article {
+				border-top-width: _size(border-width);
+				padding: _size(gutter);
+				width: 50%;
+
+				&:nth-child(1),
+				&:nth-child(2) {
+					border-top-width: 0;
+				}
+
+				&:nth-last-child(2n - 1) {
+					border-right-width: 0;
+				}
+			}
+		}
+
+		@include breakpoint(xsmall) {
+			@include vendor('flex-direction', 'column');
+
+			> article {
+				border-right: 0;
+				padding: _size(gutter) 0;
+				width: 100%;
+
+				&:nth-child(1) {
+					padding-top: (_size(gutter) * 0.5);
+				}
+
+				&:nth-child(2) {
+					border-top-width: _size(border-width);
+				}
+
+				&:nth-last-child(1) {
+					padding-bottom: (_size(gutter) * 0.5);
+				}
+			}
+		}
+	}
+
+	@mixin color-stats($p: null) {
+		.stats {
+			> article {
+				border-color: _palette($p, border);
+			}
+		}
+	}
+
+	@include color-stats;

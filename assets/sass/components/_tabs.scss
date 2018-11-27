@@ -1,0 +1,142 @@
+///
+/// Telemetry by Pixelarity
+/// pixelarity.com | hello@pixelarity.com
+/// License: pixelarity.com/license
+///
+
+/* Tabs */
+
+	.tabs {
+		margin: 0 0 _size(element-margin) 0;
+
+		.titles {
+			@include vendor('user-select', 'none');
+			list-style-type: none;
+			margin-bottom: (_size(border-width) * -1);
+			padding-left: 0;
+
+			li {
+				@include vendor('transition-property', 'color, background-color');
+				@include vendor('transition-duration', '#{_duration(transition)}');
+				border-style: solid;
+				border-width: _size(border-width) _size(border-width) 0 0;
+				display: inline-block;
+				font-size: 1.2em;
+				font-weight: _font(weight-bold);
+				padding: 1em 3em;
+
+				&:first-child {
+					border-left-width: _size(border-width);
+				}
+
+				&.active {
+					padding-top: 1.5em;
+					border-left-width: _size(border-width);
+				}
+
+				& + .active {
+					margin-left: (_size(border-width) * -1);
+				}
+			}
+		}
+
+		.panels {
+			@include padding((_size(gutter) * 1.25), (_size(gutter) * 1.25));
+			border-style: solid;
+			border-width: _size(border-width);
+		}
+
+		.panel {
+			@include vendor('transition', 'opacity #{_duration(transition)} ease-in-out');
+			opacity: 0;
+
+			.image {
+				margin-bottom: 0;
+
+				img {
+					width: 100%;
+				}
+			}
+
+			&.active {
+				opacity: 1;
+			}
+		}
+
+		@include breakpoint(large) {
+			.titles {
+				li {
+					font-size: 1em;
+				}
+			}
+		}
+
+		@include breakpoint(small) {
+			.panels {
+				@include padding(2em, 2em);
+			}
+		}
+
+		@include breakpoint(xsmall) {
+			.titles {
+				li {
+					font-size: 0.8em;
+					padding: 1em;
+
+					&.active {
+						padding-top: 1em;
+					}
+				}
+			}
+
+			.panels {
+				@include padding(2em, 2em);
+			}
+		}
+
+		@include orientation(portrait) {
+			.titles {
+				@include vendor('display', 'flex');
+
+				li {
+					@include vendor('flex-grow', '1');
+					@include vendor('flex-shrink', '1');
+					text-align: center;
+
+					&.active {
+						padding-top: 1em;
+					}
+				}
+			}
+		}
+	}
+
+	@mixin color-tabs($p: null) {
+		$highlight: _palette($p, highlight);
+
+		.tabs {
+			.titles {
+				li {
+					border-color: _palette($p, border);
+					background-color: _palette($p, border-bg);
+
+					&.active {
+						background-color: _palette($p, bg);
+						border-bottom-color: _palette($p, bg);
+						@if $p == $highlight {
+							color: _palette($p, fg-bold);
+						}
+						@else {
+							color: _palette($highlight, bg);
+						}
+					}
+				}
+			}
+
+			.panels {
+				border-color: _palette($p, border);
+			}
+		}
+	}
+
+	@include color-tabs;

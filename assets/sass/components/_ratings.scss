@@ -1,0 +1,74 @@
+///
+/// Telemetry by Pixelarity
+/// pixelarity.com | hello@pixelarity.com
+/// License: pixelarity.com/license
+///
+
+/* Ratungs */
+
+	$steps: 20;
+
+	.ratings {
+		margin: 0 0 _size(element-margin) 0;
+
+		> article {
+			margin-bottom: (_size(element-margin) * 1.25);
+
+			&:last-child {
+				margin-bottom: 0;
+			}
+		}
+
+		.progress {
+			border-style: solid;
+			border-top-width: _size(border-width);
+			font-size: 0.9em;
+			padding-top: 0.25em;
+			position: relative;
+
+			&:before {
+				content: '';
+				height: _size(border-width);
+				left: 0;
+				position: absolute;
+				top: (_size(border-width) * -1);
+			}
+
+			@for $i from 0 to ($steps + 1) {
+				$value: (100 / $steps * $i);
+
+				&[data-progress="#{$value}"] {
+					&:before {
+						width: ($value * 1%);
+					}
+				}
+			}
+		}
+
+		@include breakpoint(small) {
+			> article {
+				margin-bottom: (_size(element-margin) * 0.75);
+			}
+		}
+	}
+
+	@mixin color-ratings($p: null) {
+		$highlight: _palette($p, highlight);
+
+		.progress {
+			border-color: _palette($p, border);
+
+			@if $p == $highlight {
+				color: _palette($highlight, fg-bold);
+			}
+			@else {
+				color: _palette($highlight, bg);
+			}
+
+			&:before {
+				background-color: currentColor;
+			}
+		}
+	}
+
+	@include color-ratings;

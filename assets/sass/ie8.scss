@@ -1,0 +1,44 @@
+@import 'libs/vars';
+@import 'libs/functions';
+@import 'libs/mixins';
+@import 'libs/skel';
+
+/*
+	Telemetry by Pixelarity
+	pixelarity.com | hello@pixelarity.com
+	License: pixelarity.com/license
+*/
+
+/* Quotes */
+
+	.quotes {
+		> article {
+			&:after {
+				display: none;
+			}
+		}
+	}
+
+/* Header */
+
+	#header {
+		> nav {
+			@at-root {
+				.dropotron {
+					&.level-0 {
+						&:before {
+							display: none;
+						}
+					}
+				}
+			}
+		}
+	}
+
+/* Banner */
+
+	#banner {
+		&:before {
+			display: none;
+		}
+	}
